@@ -18,8 +18,8 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, ConversationHandler, Filters
 import datetime as dt
 
-#AuthKey = '638918174:AAGkR-wBtzVHCiOrDGmtgAsyaHluE7IicDU'                     #real bot Auth Token
-AuthKey = '762472983:AAG47FPX7S84RYAXlXBg3U5NQ01JtsFZcNo'                      #demo bot Auth Token 
+AuthKey = '638918174:AAGkR-wBtzVHCiOrDGmtgAsyaHluE7IicDU'                     #real bot Auth Token
+#AuthKey = '762472983:AAG47FPX7S84RYAXlXBg3U5NQ01JtsFZcNo'                      #demo bot Auth Token 
 from firebase.firebase import FirebaseApplication, FirebaseAuthentication
 url = 'https://smufoodchamps.firebaseio.com/'
 token = 'CgosBev5DkwojmcMhBh8eIEmMXMoKwzz8T95drKa'                             #Firebase Auth Token
@@ -333,7 +333,7 @@ def _log_clr(bot, update, user_data):
         reply += "\nThank you for reporting food with us! Have a great day! 🙆"
         fb.put('/' + user_data['bldg'], user_data['rpt_time'], [exact_loc, user_data['exp'], user_data['clr'], user_data['type']])
         channel_notif = "🍚 New food reported at\n <b>{0}</b> 🍜\n[Dietary Req: {3}; Expiry:{1}h; Cleared: {2}h]".format(exact_loc, user_data['exp'], user_data['clr'], user_data['type'])
-        bot.send_message(chat_id=-1001280645607, text=channel_notif, reply_markup=None, parse_mode=ParseMode.HTML)        #demo channel chat_id = -1001280645607
+        bot.send_message(chat_id="@smufoodchamps", text=channel_notif, reply_markup=None, parse_mode=ParseMode.HTML)        #demo channel chat_id = -1001280645607
     update.message.reply_text(text=reply, parse_mode=ParseMode.HTML)        
     return state
 
